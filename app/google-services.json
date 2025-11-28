@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "727310961184",
+    "firebase_url": "https://whatsapp-1b397-default-rtdb.firebaseio.com",
+    "project_id": "whatsapp-1b397",
+    "storage_bucket": "whatsapp-1b397.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727310961184:android:ed14acb08213a47140ca45",
+        "android_client_info": {
+          "package_name": "com.alex.whatsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABlW2WzfP-sYq9QDTM5EUbVCs6zFOZeK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727310961184:android:d50b50df55b38bd140ca45",
+        "android_client_info": {
+          "package_name": "com.example.onlineshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABlW2WzfP-sYq9QDTM5EUbVCs6zFOZeK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
