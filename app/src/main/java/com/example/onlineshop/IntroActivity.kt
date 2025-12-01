@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -30,6 +31,8 @@ import androidx.compose.ui.unit.sp
 class IntroActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
         setContent {
             IntroScreen(onClick = {
                 startActivity(Intent(this, MainActivity::class.java))
@@ -37,6 +40,7 @@ class IntroActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Composable
 @Preview
@@ -46,6 +50,7 @@ fun IntroScreen(onClick:()-> Unit={}) {
             .fillMaxSize()
             .background(Color.White)
             .verticalScroll(rememberScrollState())
+            .padding(WindowInsets.systemBars.asPaddingValues())
             .padding(16.dp),
 
         horizontalAlignment = Alignment.CenterHorizontally
