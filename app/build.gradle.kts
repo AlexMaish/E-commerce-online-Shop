@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
 // -----------------------------------------
 // TOOLING & PREVIEW
