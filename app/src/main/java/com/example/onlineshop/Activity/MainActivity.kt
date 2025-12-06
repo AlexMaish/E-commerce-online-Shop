@@ -673,8 +673,10 @@ fun RecommendedItemCard(item: ItemsModel) {
                         base64String = item.picUrl[0],
                         modifier = Modifier
                             .fillMaxSize()
-                            .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                            .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                        contentScale = ContentScale.Fit
                     )
+
                 } else {
                     // Placeholder if no image
                     Box(

@@ -260,41 +260,29 @@ fun Base64Images(
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(base64String) {
-        Log.d("Base64Images", "Processing base64 string, length: ${base64String.length}")
-
         bitmap = try {
-            // Check if the string is empty
             if (base64String.isEmpty()) {
                 errorMessage = "Base64 string is empty"
                 null
             } else {
                 val pureBase64 = if (base64String.contains(",")) {
                     base64String.substringAfter(",")
-                } else {
-                    base64String
-                }
-
-                Log.d("Base64Images", "Pure base64 length: ${pureBase64.length}")
+                } else base64String
 
                 val decoded = Base64.decode(pureBase64, Base64.DEFAULT)
-                Log.d("Base64Images", "Decoded byte array size: ${decoded.size}")
-
                 val bitmapResult = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
+
                 if (bitmapResult == null) {
-                    errorMessage = "BitmapFactory returned null"
-                    Log.d("Base64Images", "BitmapFactory returned null")
-                } else {
-                    Log.d("Base64Images", "Bitmap decoded successfully: ${bitmapResult.width}x${bitmapResult.height}")
+                    errorMessage = "Failed to decode image"
                 }
+
                 bitmapResult
             }
         } catch (e: Exception) {
             errorMessage = "Error: ${e.message}"
-            Log.e("Base64Images", "Error decoding base64", e)
             null
         }
         isLoading = false
-        Log.d("Base64Images", "Loading complete, bitmap: ${bitmap != null}, error: $errorMessage")
     }
 
     Box(
@@ -315,29 +303,26 @@ fun Base64Images(
                     contentScale = contentScale,
                     modifier = Modifier.fillMaxSize()
                 )
-            } ?: run {
-                // Fallback with debug info
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color(0xFFF5F5F5)),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.search_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(32.dp),
-                        colorFilter = ColorFilter.tint(Color(0xFFCCCCCC))
+            } ?: Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFFF5F5F5)),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.search_icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    colorFilter = ColorFilter.tint(Color(0xFFCCCCCC))
+                )
+                if (errorMessage != null) {
+                    Text(
+                        text = "Decode failed",
+                        color = Color.Red,
+                        fontSize = 10.sp,
+                        modifier = Modifier.padding(top = 4.dp)
                     )
-                    if (errorMessage != null) {
-                        Text(
-                            text = "Decode failed",
-                            color = Color.Red,
-                            fontSize = 10.sp,
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
-                    }
                 }
             }
         }

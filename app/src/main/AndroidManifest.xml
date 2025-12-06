@@ -13,9 +13,11 @@
         android:theme="@style/Theme.OnlineShop"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.ListItemsActivity"
+            android:name=".Activity.DetailActivity"
             android:exported="false" />
-        <!-- Intro screen should launch first -->
+        <activity
+            android:name=".Activity.ListItemsActivity"
+            android:exported="false" /> <!-- Intro screen should launch first -->
         <activity
             android:name=".Activity.IntroActivity"
             android:exported="true">

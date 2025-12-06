@@ -19,12 +19,12 @@ class MainViewModel : ViewModel() {
     private val _category = MutableLiveData<MutableList<CategoryModel>>()
     private val _banner = MutableLiveData<List<SliderModel>>()
     private val _recommended = MutableLiveData<MutableList<ItemsModel>>()
-    private val _filteredItems = MutableLiveData<MutableList<ItemsModel>>() // Add this
+    private val _filteredItems = MutableLiveData<MutableList<ItemsModel>>()
 
     val banners: LiveData<List<SliderModel>> = _banner
     val categories: LiveData<MutableList<CategoryModel>> = _category
     val recommended: LiveData<MutableList<ItemsModel>> = _recommended
-    val filteredItems: LiveData<MutableList<ItemsModel>> = _filteredItems // Add this
+    val filteredItems: LiveData<MutableList<ItemsModel>> = _filteredItems
 
     fun loadFiltered(id: String) {
         val ref = firebaseDatabase.getReference("Items")
